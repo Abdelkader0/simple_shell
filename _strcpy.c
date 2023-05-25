@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * _strcpy - copy a string
- * @dest: destination string
- * @src: source string
- * Return: pointer to the destination string
+ *_strcpy - copy a string
+ *@dest: destination string
+ *@src: source string
+ *Return: pointer to the destination string
  */
 char *_strcpy(char *dest, char *src)
 {
@@ -17,5 +17,5 @@ char *_strcpy(char *dest, char *src)
 	}
 	dest[i] = '\0';
 
-	return dest;
+	return (dest);
 }

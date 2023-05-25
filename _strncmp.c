@@ -16,5 +16,5 @@ size_t _strncmp(char *s1, char *s2, size_t n)
 			return (s1[i] - s2[i]);
 	}
 
-	return 0;
+	return (0);
 }
