@@ -17,7 +17,7 @@ char **token(char *lineptr)
 
 	for (i = 0; lineptr[i]; i++)
 	{
-		if (lineptr[i] == '')
+		if (lineptr[i] == '\0')
 			size++;
 	}
 

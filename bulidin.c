@@ -30,7 +30,7 @@ void exit_command(char **arg, char *lineptr, int exit_status)
  *
  * This function prints all environment variables to the standard output.
  */
-void getenv(char **env)
+void _getenv(char **env)
 {
 	size_t index = 0;
 	while (env[index])

@@ -22,7 +22,7 @@ int _putchar(char c);
 char *path(char **env);
 int _values_path(char **arg, char **env);
 char *line_command(void);
-void _getenv(char **env);
+void _getenv_command(char **env);
 char **token(char *lineptr);
 void _exit_command(char **args, char *lineptr, int _exit);
 int _fork_fun(char **arg, char **av, char **env,

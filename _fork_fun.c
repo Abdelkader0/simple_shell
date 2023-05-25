@@ -10,7 +10,7 @@
  * @c: Checker for new test.
  * Return: 0 on success.
  */
-int fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
+int fork_fun(char **arg, char **av, char **env, char *lineptr, int np)
 {
 	pid_t child;
 	int status;
@@ -23,6 +23,7 @@ int fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
 		if (execve(arg[0], arg, env) == -1)
 		{
 			fprintf(stderr, format, av[0], np, arg[0])
+				;
 				free(arg[0]);
 			free(arg);
 			free(lineptr);
