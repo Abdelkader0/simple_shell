@@ -1,14 +1,19 @@
 #include "shell.h"
+
 /**
- * cleanup - Frees the memory allocated for
- * the command and user command arrays.
- *
- * @command: The command string.
- * @user_command: The array of strings.
+ * _exit_command - Handle the "exit" command
+ * @user_command: Array of command tokens
+ * @lineptr: Pointer to the input command line
+ * @exit_status: Exit status value
  */
-void cleanup(char *command, char **user_command)
+void _exit_command(char **user_command, char *lineptr, int exit_status)
 {
-        free(command);
+    if (user_command)
         free(user_command);
+
+    if (lineptr)
+        free(lineptr);
+
+    exit(exit_status);
 }
-    
+

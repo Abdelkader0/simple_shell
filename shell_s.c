@@ -1,46 +1,51 @@
 #include "shell.h"
 
-#define MAX_COMMAND_LENGTH 100
-
 /**
- * main - Entry point of the program.
- *
- * @ac: The number of command-line arguments.
- * @av: An array of strings representing the command-line arguments.
- * @env: The environment variables.
- *
- * Return: 0 on success.
+ * main - Main function to handle shell execution
+ * @ac: Number of arguments
+ * @av: Array of arguments
+ * @env: Array of environment variables
+ * Return: Exit status
  */
 int main(int ac, char **av, char **env)
 {
-	char *getcommand = NULL;
-	char **user_command = NULL;
-	int should_exit = 0;
+	char *getcommand = NULL, **user_command = NULL;
+	int pathValue = 0, _exit = 0, n = 0;
 	(void)ac;
-	(void)av;
 
-	while (!should_exit)
+	while (1)
 	{
-		printf("#cisfun$ ");
-
-		getcommand = malloc(MAX_COMMAND_LENGTH * sizeof(char));
-		if (!getcommand)
+		print_prompt();
+		getcommand = _getline_command();
+		if (getcommand)
 		{
-			perror("malloc");
-			exit(EXIT_FAILURE);
+			pathValue++;
+			user_command = _get_token(getcommand);
+			if (!user_command)
+			{
+				free(getcommand);
+				continue;
+			}
+			if (!_strcmp(user_command[0], "exit") && user_command[1] == NULL)
+				_exit_command(user_command, getcommand, _exit);
+			if (!_strcmp(user_command[0], "env"))
+				_getenv(env);
+			else
+			{
+				n = _values_path(&user_command[0], env);
+				_exit = _fork_fun(user_command, av, env, getcommand, pathValue, n);
+				if (n == 0)
+					free(user_command[0]);
+			}
+			free(user_command);
 		}
-
-		if (fgets(getcommand, MAX_COMMAND_LENGTH, stdin) == NULL)
+		else
 		{
-			printf("\n");
-			break;
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
+			exit(_exit);
 		}
-		getcommand[strcspn(getcommand, "\n")] = '\0';
-
-		user_command = split_command(getcommand);
-		execute_command(user_command[0], env);
-		cleanup(getcommand, user_command);
+		free(getcommand);
 	}
-
-	return (0);
+	return (_exit);
 }
