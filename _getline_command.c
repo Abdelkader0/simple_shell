@@ -17,10 +17,10 @@ char *_getline_command()
 	if (nread == -1)
 	{
 		if (feof(stdin))
-			return NULL;
+			return (NULL);
 		perror("getline");
 		exit(EXIT_FAILURE);
 	}
 
-	return line;
+	return (line);
 }
