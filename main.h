@@ -8,7 +8,7 @@
 #include <sys/wait.h>
 #include <errno.h>
 
-extern char **environ; // Declare environ variable
+extern char **environ;
 
 /* Function Declarations */
 char *_getline_command();
