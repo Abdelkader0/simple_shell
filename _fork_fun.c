@@ -1,30 +1,28 @@
 #include "main.h"
 
 /**
- * _fork_fun - function that create a fork
- *@arg: command and values path
- *@av: Has the name of our program
- *@env: environment
- *@lineptr: command line for the user
- *@np: id of proces
- *@c: Checker add new test
- *Return: 0 success
+ * fork_fun - Creates a fork and executes a command.
+ * @arg: Command and path values.
+ * @av: Name of the program.
+ * @env: Environment variables.
+ * @lineptr: Command line for the user.
+ * @np: Process ID.
+ * @c: Checker for new test.
+ * Return: 0 on success.
  */
-
-int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
+int fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
 {
-	pid_t ch;
+	pid_t child;
 	int status;
 	char *format = "%s: %d: %s: not found\n";
 
-	ch = fork();
+	child = fork();
 
-	if (ch == 0)
+	if (child == 0)
 	{
 		if (execve(arg[0], arg, env) == -1)
 		{
-			fprintf(stderr, format, av[0], np, arg[0]);
-			if (!c)
+			fprintf(stderr, format, av[0], np, arg[0])
 				free(arg[0]);
 			free(arg);
 			free(lineptr);
@@ -38,6 +36,5 @@ int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
 		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
 			return (WEXITSTATUS(status));
 	}
-
 	return (0);
 }
