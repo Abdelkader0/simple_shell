@@ -1,50 +1,43 @@
 #include "main.h"
 
 /**
- * _fork_fun - Forks a child process and executes a command
- * @args: The arguments array
- * @envp: The environment array
- * @env: The current environment
- * @line: The command line
- * @pid: The process ID
- * @status: The exit status
- * Return: The exit status of the executed command
+ * _fork_fun - function that create a fork
+ *@arg: command and values path
+ *@av: Has the name of our program
+ *@env: environment
+ *@lineptr: command line for the user
+ *@np: id of proces
+ *@c: Checker add new test
+ *Return: 0 success
  */
 
-int _fork_fun(char **args, char **envp, char **env, char *line, pid_t pid, int status)
+int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
 {
-	pid = fork();
+	pid_t ch;
+	int status;
+	char *format = "%s: %d: %s: not found\n";
 
-	if (pid == -1)
+	ch = fork();
+
+	if (ch == 0)
 	{
-		perror("Fork");
-		exit(EXIT_FAILURE);
-	}
-	else if (pid == 0)
-	{
-		if (_strcmp(args[0], "env") == 0)
+		if (execve(arg[0], arg, env) == -1)
 		{
-			_printenv(env);
-			free(line);
-			free(args);
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			if (execve(args[0], args, envp) == -1)
-			{
-				perror("Execve");
-				free(line);
-				free(args);
-				exit(EXIT_FAILURE);
-			}
+			fprintf(stderr, format, av[0], np, arg[0]);
+			if (!c)
+				free(arg[0]);
+			free(arg);
+			free(lineptr);
+			exit(errno);
 		}
 	}
 	else
 	{
-		waitpid(pid, &status, 0);
+		wait(&status);
+
+		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+			return (WEXITSTATUS(status));
 	}
 
-	return (status);
+	return (0);
 }
-
