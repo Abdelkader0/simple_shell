@@ -1,5 +1,5 @@
-#ifndef  SHELL_H
-#define  SHELL_H
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,4 +36,3 @@ char **split_command(char *command);
 void cleanup(char *command, char **user_command);
 
 #endif /* SHELL_H */
-
