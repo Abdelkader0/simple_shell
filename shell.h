@@ -22,12 +22,14 @@ int _putchar(char c);
 void print_prompt(void);
 
 char *_get_path(char **env);
-int _values_path(char **arg, char **env);
 char *_getline_command(void);
-void _getenv_command(char **env);
 char **_get_token(char *lineptr);
-void _exit_command(char **args, char *lineptr, int _exit);
-int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c);
+void _exit_command(char **args);
+void _getenv_command(char **env);
+int _values_path(char **arg, char **env);
+int _fork_fun(char **command, char **av, char **env,
+		char *input, int pathValue, int n);
 char *_strtok(char *str, const char *delim);
+
 
 #endif /* SHELL_H */
