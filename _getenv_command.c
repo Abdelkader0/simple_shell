@@ -1,8 +1,9 @@
 #include "shell.h"
 
 /**
- *_getenv_command - Print all environment variables.
- *@env: The environment variable array.
+ * _getenv_command - Print all environment variables.
+ * @env: The environment variable array.
+ * Return: The value of the environment variable if found, NULL otherwise
  */
 void _getenv_command(char **env)
 {
