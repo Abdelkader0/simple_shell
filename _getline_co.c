@@ -11,7 +11,7 @@ char *_getline_command(void)
         size_t charter_user = 0;
 
         if (isatty(STDOUT_FILENO) && isatty(STDIN_FILENO))
-                write(STDOUT_FILENO, "#cisfun$ ", 10);
+                write(STDOUT_FILENO, "#cisfun ", 9);
 
         if (getline(&lineptr, &charter_user, stdin) == -1)
         {
