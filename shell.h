@@ -18,6 +18,9 @@ size_t _strncmp(char *s1, char *s2, size_t n);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
+size_t _strcspn(const char *s1, const char *s2);
+size_t _strspn(const char *s1, const char *s2);
+char *_strchr(const char *s, int c);
 int _putchar(char c);
 void print_prompt(void);
 
