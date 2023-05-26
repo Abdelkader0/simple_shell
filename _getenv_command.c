@@ -4,7 +4,7 @@
  *_getenv - Print all environment variables.
  *@env: The environment variable array.
  */
-void _getenv(char **env)
+void _getenv_command(char **env)
 {
 	size_t i;
 
