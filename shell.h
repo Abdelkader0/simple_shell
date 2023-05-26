@@ -24,14 +24,10 @@ void print_prompt(void);
 char *_get_path(char **env);
 int _values_path(char **arg, char **env);
 char *_getline_command(void);
-void _getenv(char **env);
+void _getenv_command(char **env);
 char **_get_token(char *lineptr);
 void _exit_command(char **args, char *lineptr, int _exit);
 int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c);
 char *_strtok(char *str, const char *delim);
-
-void execute_command(char *command, char **env);
-char **split_command(char *command);
-void cleanup(char *command, char **user_command);
 
 #endif /* SHELL_H */
