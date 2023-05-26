@@ -3,13 +3,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <limits.h>
+#include <fcntl.h>
 #include <errno.h>
-
 #define MAX_COMMAND_LENGTH 100
 extern char **environ;
 
@@ -34,4 +35,3 @@ int _fork_fun(char **command, char **av, char **env,
 		char *input, int pathValue, int n);
 char *_strtok(char *str, const char *delim);
 
-#endif /* SHELL_H */
