@@ -34,4 +34,4 @@ int _values_path(char **arg, char **env);
 int _fork_fun(char **command, char **av, char **env,
 		char *input, int pathValue, int n);
 char *_strtok(char *str, const char *delim);
-
+#endif
