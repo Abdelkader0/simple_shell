@@ -7,15 +7,6 @@
  * @env: Array of environment variables
  * Return: Exit status
  */
-char *_get_path(char **env);
-char *_getline_command(void);
-char **_get_token(char *lineptr);
-void _exit_command(char **user_command, char *lineptr, int exit_status);
-void _getenv_command(char **env);
-int _values_path(char **arg, char **env);
-int _fork_fun(char **command, char **av, char **env,
-		char *input, int pathValue, int n);
-char *_strtok(char *str, const char *delim);
 
 int main(int ac, char **av, char **env)
 {
