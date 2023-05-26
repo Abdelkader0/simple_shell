@@ -1,10 +1,10 @@
-#include "shell.h"
+#include "shell2.h"
 /**
  * _strlen - calculate the length of a string
  * @s: input string
  * Return: length of the string
  */
-int _strlen(char *s)
+unsigned int _strlen(char *s)
 {
 	int length = 0;
 
