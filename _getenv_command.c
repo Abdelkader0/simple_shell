@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- *_getenv - Print all environment variables.
+ *_getenv_command - Print all environment variables.
  *@env: The environment variable array.
  */
 void _getenv_command(char **env)
