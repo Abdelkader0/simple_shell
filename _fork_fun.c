@@ -11,7 +11,8 @@
  *
  * Return: 0 on success
  */
-int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
+int _fork_fun(char **arg, char **av, char **env,
+		char *lineptr, int np, int c)
 {
 	pid_t child;
 	int status;
