@@ -44,7 +44,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * split_line - Split a string into tokens.
+ * split_string - Split a string into tokens.
  * @line: The string to split.
  * @delim: The delimiter characters.
  *
